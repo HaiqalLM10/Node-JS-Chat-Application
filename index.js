@@ -20,19 +20,10 @@ app.use(express.json());
 app.use("/api/auth", userRoutes)
 app.use("/api/messages", messageRoutes)
 
-// mongoose.connect(process.env.MONGO_URL, {
-//     useNewUrlParser: true, 
-//     useUnifiedTopology: true,
-// })
-// .then(() => {
-//     console.log("DB Connection Successfull");
-// })
-// .catch((err) => {
-//     console.log(err.message);
-// })
+const port = process.env.PORT || 8000;
 
-const server = app.listen(process.env.PORT, () => {
-    console.log(`Server Started on Port ${process.env.PORT}`)
+const server = app.listen(port, () => {
+    console.log(`Server Started on Port ${port}`)
 })
 
 const io = socket(server, {
